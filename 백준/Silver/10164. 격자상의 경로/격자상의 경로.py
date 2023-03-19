@@ -5,15 +5,9 @@ if(c == 0):
     combi =comb(a+b-2, a-1)
     print(combi)
 else:
-    moving_count_before_point=0
-    moving_count_after_point=0
-    bigger = max(a, b)
-    mogs, nameoji = divmod(c,bigger)
-    nameoji -=1
-    moving_count_before_point += comb(mogs+nameoji, nameoji)
-    mogs,nameoji = divmod(a*b-c,bigger)
-    moving_count_after_point += comb(mogs+nameoji, nameoji)
-    answer=moving_count_after_point*moving_count_before_point
+    mogs_before, nameoji_before = divmod(c-1, max(a,b))
+    mogs_after,nameoji_after =a-1-mogs_before,b-1-nameoji_before
+    answer = comb(mogs_before+nameoji_before,mogs_before)*comb(nameoji_after+mogs_after, nameoji_after)
     print(answer)
 
 
